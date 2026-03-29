@@ -13,13 +13,11 @@ export function Home() {
             <div className="flex items-center justify-center w-16 h-16 bg-card border-2 border-[#4ade80]">
               <Terminal className="h-10 w-10 text-[#4ade80]" />
             </div>
-            <h1 className="header-font text-6xl text-foreground tracking-wider">
-              PROMPTU
-            </h1>
+            <h1 className="header-font text-6xl text-foreground tracking-wider">PROMPTU</h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Your terminal-inspired prompt management system. Organize, edit, and generate
-            AI prompts with style.
+            Your terminal-inspired prompt management system. Organize, edit, and generate AI prompts
+            with style.
           </p>
         </div>
 

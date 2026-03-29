@@ -24,7 +24,9 @@ export function PromptEditor({ initialPrompt }: PromptEditorProps) {
   });
   const [customizationRequest, setCustomizationRequest] = useState("");
   const [isCustomizing, setIsCustomizing] = useState(false);
-  const [savedPrompts, setSavedPrompts] = useState<Array<{ id: string; title: string; text: string }>>([]);
+  const [savedPrompts, setSavedPrompts] = useState<
+    Array<{ id: string; title: string; text: string }>
+  >([]);
 
   const extractVariables = (text: string): string[] => {
     const regex = /\{\{([^}]+)\}\}/g;
@@ -40,7 +42,7 @@ export function PromptEditor({ initialPrompt }: PromptEditorProps) {
 
   const handleCustomizeWithAI = () => {
     if (!customizationRequest.trim()) return;
-    
+
     setIsCustomizing(true);
     // Simulate AI customization (in production, this would call an AI API)
     setTimeout(() => {
@@ -125,27 +127,19 @@ Additional context and improvements applied.`;
                 placeholder="# Enter your prompt template here..."
                 className="min-h-75 resize-none bg-black border-border focus:border-foreground text-foreground"
               />
-              
+
               <div className="flex flex-wrap gap-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleCopy}
-                >
+                <Button variant="outline" size="sm" onClick={handleCopy}>
                   <Copy className="h-3 w-3 mr-1" />
                   COPY
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  onClick={handleReset}
-                >
+                <Button variant="outline" size="sm" onClick={handleReset}>
                   <RotateCcw className="h-3 w-3 mr-1" />
                   RESET
                 </Button>
-                <Button 
-                  variant="default" 
-                  size="sm" 
+                <Button
+                  variant="default"
+                  size="sm"
                   onClick={handleSave}
                   className="bg-[#4ade80] text-black hover:bg-[#4ade80]/80"
                 >
@@ -228,14 +222,10 @@ Additional context and improvements applied.`;
               <CardContent className="space-y-3">
                 {currentVariables.map((variable) => (
                   <div key={variable} className="space-y-1">
-                    <label className="text-xs text-muted-foreground">
-                      ${variable}
-                    </label>
+                    <label className="text-xs text-muted-foreground">${variable}</label>
                     <Input
                       value={variables[variable] || ""}
-                      onChange={(e) =>
-                        setVariables({ ...variables, [variable]: e.target.value })
-                      }
+                      onChange={(e) => setVariables({ ...variables, [variable]: e.target.value })}
                       placeholder={`value...`}
                       className="bg-black border-border focus:border-foreground"
                     />
@@ -252,9 +242,7 @@ Additional context and improvements applied.`;
                 <Terminal className="h-5 w-5" />
                 OUTPUT_PREVIEW
               </CardTitle>
-              <CardDescription className="text-xs">
-                // Final rendered prompt
-              </CardDescription>
+              <CardDescription className="text-xs">// Final rendered prompt</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="bg-black border border-border p-4 min-h-50 text-sm whitespace-pre-wrap text-foreground">
@@ -267,9 +255,7 @@ Additional context and improvements applied.`;
           {savedPrompts.length > 0 && (
             <Card className="border-border">
               <CardHeader>
-                <CardTitle className="header-font text-xl text-foreground">
-                  SAVED_FILES
-                </CardTitle>
+                <CardTitle className="header-font text-xl text-foreground">SAVED_FILES</CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
                 {savedPrompts.map((saved) => (
@@ -279,9 +265,7 @@ Additional context and improvements applied.`;
                     onClick={() => setPromptText(saved.text)}
                   >
                     <p className="text-sm text-foreground">&gt; {saved.title}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-1">
-                      {saved.text}
-                    </p>
+                    <p className="text-xs text-muted-foreground line-clamp-1">{saved.text}</p>
                   </button>
                 ))}
               </CardContent>

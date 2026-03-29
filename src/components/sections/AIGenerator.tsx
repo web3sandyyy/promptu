@@ -22,7 +22,7 @@ export function AIGenerator() {
     if (!goal.trim()) return;
 
     setIsGenerating(true);
-    
+
     // Simulate AI generation (in production, this would call an AI API)
     setTimeout(() => {
       const generated = `# OPTIMIZED_PROMPT: ${goal}
@@ -59,10 +59,7 @@ OPTIMIZATION_LEVEL: ${complexity.toUpperCase()}
 STATUS: READY`;
 
       setGeneratedPrompt(generated);
-      setHistory([
-        { id: Date.now().toString(), goal, prompt: generated },
-        ...history.slice(0, 4),
-      ]);
+      setHistory([{ id: Date.now().toString(), goal, prompt: generated }, ...history.slice(0, 4)]);
       setIsGenerating(false);
     }, 2000);
   };
@@ -81,9 +78,7 @@ STATUS: READY`;
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="header-font text-4xl text-primary tracking-wider mb-2">
-          &gt; AI_GENERATOR
-        </h1>
+        <h1 className="header-font text-4xl text-primary tracking-wider mb-2">&gt; AI_GENERATOR</h1>
         <p className="text-muted-foreground text-sm">
           // Generate optimized prompts from scratch using AI
         </p>
@@ -98,9 +93,7 @@ STATUS: READY`;
                 <Cpu className="h-5 w-5" />
                 INPUT_PARAMS
               </CardTitle>
-              <CardDescription className="text-xs">
-                // Define generation parameters
-              </CardDescription>
+              <CardDescription className="text-xs">// Define generation parameters</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -116,9 +109,7 @@ STATUS: READY`;
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs text-muted-foreground">
-                  $CONTEXT
-                </label>
+                <label className="text-xs text-muted-foreground">$CONTEXT</label>
                 <Textarea
                   value={context}
                   onChange={(e) => setContext(e.target.value)}
@@ -222,18 +213,10 @@ STATUS: READY`;
                 </CardTitle>
                 {generatedPrompt && (
                   <div className="flex gap-2">
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      onClick={handleRegenerate}
-                    >
+                    <Button variant="ghost" size="sm" onClick={handleRegenerate}>
                       <RefreshCw className="h-3 w-3" />
                     </Button>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={handleCopy}
-                    >
+                    <Button variant="outline" size="sm" onClick={handleCopy}>
                       <Copy className="h-3 w-3" />
                     </Button>
                   </div>
@@ -258,9 +241,7 @@ STATUS: READY`;
               ) : (
                 <div className="flex flex-col items-center justify-center min-h-100 text-center border border-dashed border-border bg-black">
                   <Terminal className="h-12 w-12 text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">
-                    &gt; AWAITING INPUT_
-                  </p>
+                  <p className="text-muted-foreground">&gt; AWAITING INPUT_</p>
                   <p className="text-xs text-muted-foreground mt-2">
                     // Fill parameters and execute generate
                   </p>
@@ -286,9 +267,7 @@ STATUS: READY`;
                     className="w-full text-left p-3 bg-black border border-border hover:border-primary/50 transition-colors"
                   >
                     <p className="text-sm text-primary line-clamp-1">&gt; {item.goal}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-1 mt-1">
-                      {item.prompt}
-                    </p>
+                    <p className="text-xs text-muted-foreground line-clamp-1 mt-1">{item.prompt}</p>
                   </button>
                 ))}
               </CardContent>

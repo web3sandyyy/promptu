@@ -50,11 +50,11 @@ const categoryIcons: Record<string, React.ReactNode> = {
   Communication: <MessageSquare className="h-4 w-4" />,
 };
 
-function AppSidebar({ 
-  selectedCategory, 
-  onCategoryChange 
-}: { 
-  selectedCategory: string; 
+function AppSidebar({
+  selectedCategory,
+  onCategoryChange,
+}: {
+  selectedCategory: string;
   onCategoryChange: (category: string) => void;
 }) {
   const location = useLocation();
@@ -67,9 +67,7 @@ function AppSidebar({
             <Terminal className="h-6 w-6 text-foreground" />
           </div>
           <div className="group-data-[collapsible=icon]:hidden">
-            <h1 className="header-font text-2xl text-foreground tracking-wider">
-              PROMPTU
-            </h1>
+            <h1 className="header-font text-2xl text-foreground tracking-wider">PROMPTU</h1>
             <p className="text-xs text-muted-foreground">v1.0.0</p>
           </div>
         </div>
@@ -170,11 +168,11 @@ function AppSidebar({
   );
 }
 
-function AppContent({ 
-  selectedPrompt, 
+function AppContent({
+  selectedPrompt,
   setSelectedPrompt,
   selectedCategory,
-  setSelectedCategory 
+  setSelectedCategory,
 }: {
   selectedPrompt: Prompt | null;
   setSelectedPrompt: (prompt: Prompt | null) => void;
@@ -241,10 +239,7 @@ function AppContent({
           <Route
             path="/editor"
             element={
-              <PromptEditor
-                key={selectedPrompt?.id || "new"}
-                initialPrompt={selectedPrompt}
-              />
+              <PromptEditor key={selectedPrompt?.id || "new"} initialPrompt={selectedPrompt} />
             }
           />
           <Route path="/generate" element={<AIGenerator />} />
@@ -262,11 +257,8 @@ function App() {
     <BrowserRouter>
       <SidebarProvider>
         <div className="flex min-h-screen w-full">
-          <AppSidebar 
-            selectedCategory={selectedCategory} 
-            onCategoryChange={setSelectedCategory}
-          />
-          <AppContent 
+          <AppSidebar selectedCategory={selectedCategory} onCategoryChange={setSelectedCategory} />
+          <AppContent
             selectedPrompt={selectedPrompt}
             setSelectedPrompt={setSelectedPrompt}
             selectedCategory={selectedCategory}

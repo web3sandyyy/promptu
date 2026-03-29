@@ -86,7 +86,7 @@ Requirements:
     difficulty: "advanced",
     status: "new",
   },
-  
+
   // Content Writing
   {
     id: "blog-writer",
@@ -135,7 +135,7 @@ Include:
     difficulty: "beginner",
     status: "priority",
   },
-  
+
   // Business & Marketing
   {
     id: "marketing-strategy",
@@ -191,7 +191,7 @@ Additional context: {{context}}`,
     difficulty: "advanced",
     status: "new",
   },
-  
+
   // Data Analysis
   {
     id: "data-insight",
@@ -218,7 +218,7 @@ Provide:
     difficulty: "intermediate",
     status: "clean",
   },
-  
+
   // Creative Writing
   {
     id: "story-generator",
@@ -244,7 +244,7 @@ Include:
     difficulty: "intermediate",
     status: "priority",
   },
-  
+
   // Education & Learning
   {
     id: "lesson-plan",
@@ -267,7 +267,17 @@ Include:
 5. Assessment methods
 6. Differentiation strategies
 7. Required materials`,
-    variables: ["subject", "grade_level", "duration", "objectives", "prior_knowledge", "hook_time", "instruction_time", "practice_time", "work_time"],
+    variables: [
+      "subject",
+      "grade_level",
+      "duration",
+      "objectives",
+      "prior_knowledge",
+      "hook_time",
+      "instruction_time",
+      "practice_time",
+      "work_time",
+    ],
     tags: ["education", "teaching", "curriculum"],
     difficulty: "advanced",
     status: "clean",
@@ -296,7 +306,7 @@ Include:
     difficulty: "beginner",
     status: "new",
   },
-  
+
   // Problem Solving
   {
     id: "decision-framework",
@@ -324,7 +334,7 @@ Provide:
     difficulty: "advanced",
     status: "warning",
   },
-  
+
   // Communication
   {
     id: "email-writer",

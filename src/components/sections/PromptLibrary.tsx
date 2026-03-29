@@ -14,9 +14,9 @@ interface PromptLibraryProps {
   onCategoryChange?: (category: string) => void;
 }
 
-export function PromptLibrary({ 
-  onSelectPrompt, 
-  onEditPrompt, 
+export function PromptLibrary({
+  onSelectPrompt,
+  onEditPrompt,
   selectedCategory = "All",
 }: PromptLibraryProps) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,10 +27,9 @@ export function PromptLibrary({
       prompt.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       prompt.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       prompt.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    
-    const matchesCategory =
-      selectedCategory === "All" || prompt.category === selectedCategory;
-    
+
+    const matchesCategory = selectedCategory === "All" || prompt.category === selectedCategory;
+
     return matchesSearch && matchesCategory;
   });
 
@@ -138,9 +137,7 @@ export function PromptLibrary({
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-xs text-muted-foreground line-clamp-2">
-                {prompt.description}
-              </p>
+              <p className="text-xs text-muted-foreground line-clamp-2">{prompt.description}</p>
               <div className="flex flex-wrap gap-1">
                 {prompt.tags.map((tag) => (
                   <Badge key={tag} variant="outline" className="text-xs">
@@ -158,25 +155,15 @@ export function PromptLibrary({
                   <Play className="h-3 w-3 mr-1" />
                   RUN
                 </Button>
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => onEditPrompt(prompt)}
-                >
+                <Button size="sm" variant="outline" onClick={() => onEditPrompt(prompt)}>
                   <FileCode2 className="h-3 w-3" />
                 </Button>
-                <Button
-                  size="sm"
-                  variant="ghost"
-                  onClick={() => handleCopy(prompt)}
-                >
+                <Button size="sm" variant="ghost" onClick={() => handleCopy(prompt)}>
                   <Copy className="h-3 w-3" />
                 </Button>
               </div>
               {copiedId === prompt.id && (
-                <p className="text-xs text-[#4ade80] text-center">
-                  [COPIED TO CLIPBOARD]
-                </p>
+                <p className="text-xs text-[#4ade80] text-center">[COPIED TO CLIPBOARD]</p>
               )}
             </CardContent>
           </Card>
@@ -186,12 +173,8 @@ export function PromptLibrary({
       {filteredPrompts.length === 0 && (
         <div className="text-center py-12 border border-border bg-card">
           <Terminal className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <p className="text-muted-foreground">
-            &gt; ERROR: No prompts found matching criteria
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            // Try adjusting your search filters
-          </p>
+          <p className="text-muted-foreground">&gt; ERROR: No prompts found matching criteria</p>
+          <p className="text-xs text-muted-foreground mt-2">// Try adjusting your search filters</p>
         </div>
       )}
     </div>

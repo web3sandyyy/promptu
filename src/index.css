@@ -156,27 +156,46 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 
-  h1, h2, h3, h4, h5, h6, .header-font {
-    font-family: 'VT323', monospace;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .header-font {
+    font-family: "VT323", monospace;
     letter-spacing: 0.05em;
   }
 
   /* Terminal cursor blink */
   .cursor-blink::after {
-    content: '_';
+    content: "_";
     animation: blink 1s step-end infinite;
   }
 
   @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
   }
 
   /* Remove all rounded corners globally */
-  .rounded, .rounded-sm, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, .rounded-full {
+  .rounded,
+  .rounded-sm,
+  .rounded-md,
+  .rounded-lg,
+  .rounded-xl,
+  .rounded-2xl,
+  .rounded-3xl,
+  .rounded-full {
     border-radius: 0 !important;
   }
 }
