@@ -1,26 +1,26 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { prebuiltPrompts } from "../../data/prompts";
-import type { Prompt } from "../../data/prompts";
+import { prebuiltPrompts, type Prompt } from "@/constants/prompts";
+import { STATUS_CONFIG, getStatusConfig, type StatusType } from "@/constants/status";
+import { getCategoryBySlug } from "@/constants";
 import { Search, Copy, FileCode2, Play, Terminal } from "lucide-react";
 
 interface PromptLibraryProps {
   onSelectPrompt: (prompt: Prompt) => void;
   onEditPrompt: (prompt: Prompt) => void;
-  selectedCategory?: string;
-  onCategoryChange?: (category: string) => void;
 }
 
-export function PromptLibrary({
-  onSelectPrompt,
-  onEditPrompt,
-  selectedCategory = "All",
-}: PromptLibraryProps) {
+export function PromptLibrary({ onSelectPrompt, onEditPrompt }: PromptLibraryProps) {
+  const { category: categoryParam } = useParams<{ category?: string }>();
   const [searchQuery, setSearchQuery] = useState("");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // Convert URL param back to category title
+  const selectedCategory = categoryParam ? getCategoryBySlug(categoryParam) : null;
 
   const filteredPrompts = prebuiltPrompts.filter((prompt) => {
     const matchesSearch =
@@ -28,7 +28,7 @@ export function PromptLibrary({
       prompt.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
       prompt.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    const matchesCategory = selectedCategory === "All" || prompt.category === selectedCategory;
+    const matchesCategory = !selectedCategory || prompt.category === selectedCategory.title;
 
     return matchesSearch && matchesCategory;
   });
@@ -37,23 +37,6 @@ export function PromptLibrary({
     navigator.clipboard.writeText(prompt.template);
     setCopiedId(prompt.id);
     setTimeout(() => setCopiedId(null), 2000);
-  };
-
-  const getStatusVariant = (status?: string) => {
-    switch (status) {
-      case "clean":
-        return "clean";
-      case "warning":
-        return "warning";
-      case "critical":
-        return "critical";
-      case "new":
-        return "new";
-      case "priority":
-        return "priority";
-      default:
-        return "default";
-    }
   };
 
   return (
@@ -88,30 +71,17 @@ export function PromptLibrary({
           <span className="text-foreground">TOTAL: {filteredPrompts.length}</span>
         </div>
         <span className="text-muted-foreground">|</span>
-        <div className="flex items-center gap-2">
-          <Badge variant="clean">CLEAN</Badge>
-          <span className="text-muted-foreground">
-            {prebuiltPrompts.filter((p) => p.status === "clean").length}
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Badge variant="warning">WARNING</Badge>
-          <span className="text-muted-foreground">
-            {prebuiltPrompts.filter((p) => p.status === "warning").length}
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Badge variant="new">NEW</Badge>
-          <span className="text-muted-foreground">
-            {prebuiltPrompts.filter((p) => p.status === "new").length}
-          </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <Badge variant="priority">PRIORITY</Badge>
-          <span className="text-muted-foreground">
-            {prebuiltPrompts.filter((p) => p.status === "priority").length}
-          </span>
-        </div>
+        {(Object.keys(STATUS_CONFIG) as StatusType[]).map((statusKey) => {
+          const config = STATUS_CONFIG[statusKey];
+          const count = prebuiltPrompts.filter((p) => p.status === statusKey).length;
+          if (count === 0) return null;
+          return (
+            <div key={statusKey} className="flex items-center gap-2">
+              <Badge variant={config.variant}>{config.label}</Badge>
+              <span className="text-muted-foreground">{count}</span>
+            </div>
+          );
+        })}
       </div>
 
       {/* Prompt Grid */}
@@ -126,9 +96,12 @@ export function PromptLibrary({
                 <CardTitle className="text-sm font-medium text-foreground group-hover:text-foreground">
                   {prompt.title}
                 </CardTitle>
-                {prompt.status && (
-                  <Badge variant={getStatusVariant(prompt.status)} className="shrink-0 text-xs">
-                    {prompt.status.toUpperCase()}
+                {prompt.status && getStatusConfig(prompt.status) && (
+                  <Badge
+                    variant={getStatusConfig(prompt.status)!.variant}
+                    className="shrink-0 text-xs"
+                  >
+                    {getStatusConfig(prompt.status)!.label}
                   </Badge>
                 )}
               </div>
@@ -150,7 +123,7 @@ export function PromptLibrary({
                   size="sm"
                   variant="default"
                   onClick={() => onSelectPrompt(prompt)}
-                  className="flex-1 bg-[#4ade80] text-black hover:bg-[#4ade80]/80"
+                  className="flex-1 bg-white text-black hover:bg-neutral-200"
                 >
                   <Play className="h-3 w-3 mr-1" />
                   RUN
@@ -163,7 +136,7 @@ export function PromptLibrary({
                 </Button>
               </div>
               {copiedId === prompt.id && (
-                <p className="text-xs text-[#4ade80] text-center">[COPIED TO CLIPBOARD]</p>
+                <p className="text-xs text-foreground text-center">[COPIED TO CLIPBOARD]</p>
               )}
             </CardContent>
           </Card>

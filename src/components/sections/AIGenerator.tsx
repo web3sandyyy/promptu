@@ -159,7 +159,7 @@ STATUS: READY`;
               <Button
                 onClick={handleGenerate}
                 disabled={isGenerating || !goal.trim()}
-                className="w-full"
+                className="w-full bg-white text-black hover:bg-neutral-200"
                 size="lg"
               >
                 {isGenerating ? (

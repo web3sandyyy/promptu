@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 import { Input } from "../ui/input";
 import { Badge } from "../ui/badge";
-import type { Prompt } from "../../data/prompts";
+import type { Prompt } from "@/constants/prompts";
 import { Cpu, Copy, RotateCcw, Save, FileCode2, Terminal, Variable } from "lucide-react";
 
 interface PromptEditorProps {
@@ -141,7 +141,7 @@ Additional context and improvements applied.`;
                   variant="default"
                   size="sm"
                   onClick={handleSave}
-                  className="bg-[#4ade80] text-black hover:bg-[#4ade80]/80"
+                  className="bg-white text-black hover:bg-neutral-200"
                 >
                   <Save className="h-3 w-3 mr-1" />
                   SAVE
@@ -187,7 +187,7 @@ Additional context and improvements applied.`;
               <Button
                 onClick={handleCustomizeWithAI}
                 disabled={isCustomizing || !customizationRequest.trim()}
-                className="w-full bg-[#4ade80] text-black hover:bg-[#4ade80]/80"
+                className="w-full bg-white text-black hover:bg-neutral-200"
               >
                 {isCustomizing ? (
                   <>

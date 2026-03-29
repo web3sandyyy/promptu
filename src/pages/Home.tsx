@@ -23,10 +23,10 @@ export function Home() {
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8">
-          <Card className="p-6 bg-card border-border hover:border-[#4ade80] transition-colors">
+          <Card className="p-6 bg-card border-border hover:border-foreground transition-colors">
             <div className="flex flex-col items-center space-y-3">
               <div className="p-3 bg-background border border-border">
-                <BookOpen className="h-8 w-8 text-[#4ade80]" />
+                <BookOpen className="h-8 w-8 text-foreground" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">Prompt Library</h3>
               <p className="text-sm text-muted-foreground">
@@ -35,10 +35,10 @@ export function Home() {
             </div>
           </Card>
 
-          <Card className="p-6 bg-card border-border hover:border-[#4ade80] transition-colors">
+          <Card className="p-6 bg-card border-border hover:border-foreground transition-colors">
             <div className="flex flex-col items-center space-y-3">
               <div className="p-3 bg-background border border-border">
-                <Zap className="h-8 w-8 text-[#4ade80]" />
+                <Zap className="h-8 w-8 text-foreground" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">Smart Editor</h3>
               <p className="text-sm text-muted-foreground">
@@ -47,10 +47,10 @@ export function Home() {
             </div>
           </Card>
 
-          <Card className="p-6 bg-card border-border hover:border-[#4ade80] transition-colors">
+          <Card className="p-6 bg-card border-border hover:border-foreground transition-colors">
             <div className="flex flex-col items-center space-y-3">
               <div className="p-3 bg-background border border-border">
-                <Sparkles className="h-8 w-8 text-[#4ade80]" />
+                <Sparkles className="h-8 w-8 text-foreground" />
               </div>
               <h3 className="text-lg font-semibold text-foreground">AI Generator</h3>
               <p className="text-sm text-muted-foreground">
@@ -63,12 +63,10 @@ export function Home() {
         {/* CTA Section */}
         <div className="flex items-center justify-center gap-4 pt-8">
           <Link to="/library">
-            <Button className="bg-[#4ade80] text-black hover:bg-[#4ade80]/90">
-              Browse Library
-            </Button>
+            <Button className="bg-white text-black hover:bg-neutral-200">Browse Library</Button>
           </Link>
           <Link to="/generate">
-            <Button variant="outline" className="border-border hover:border-[#4ade80]">
+            <Button variant="outline" className="border-border hover:bg-neutral-800">
               Generate Prompt
             </Button>
           </Link>
@@ -78,17 +76,17 @@ export function Home() {
         <div className="pt-8 border-t border-border">
           <div className="flex items-center justify-center gap-8 text-sm">
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-[#4ade80]" />
+              <span className="inline-block w-2 h-2 bg-white" />
               <span className="text-muted-foreground">15 PROMPTS</span>
             </div>
             <span className="text-muted-foreground">|</span>
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-[#4ade80]" />
+              <span className="inline-block w-2 h-2 bg-white" />
               <span className="text-muted-foreground">8 CATEGORIES</span>
             </div>
             <span className="text-muted-foreground">|</span>
             <div className="flex items-center gap-2">
-              <span className="inline-block w-2 h-2 bg-[#4ade80]" />
+              <span className="inline-block w-2 h-2 bg-white" />
               <span className="text-muted-foreground">SYSTEM READY</span>
             </div>
           </div>
