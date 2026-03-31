@@ -53,8 +53,8 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex p-3 shrink-0 items-center gap-2 border-b border-border bg-card/50 backdrop-blur-sm">
-      <div className="flex items-center gap-2 px-4">
+    <header className="sticky top-0 z-10 flex p-2 shrink-0 items-center gap-2 border-b border-border bg-card/50 backdrop-blur-sm">
+      <div className="flex items-center gap-2">
         <SidebarTrigger className="-ml-1" />
         <div className="flex items-center gap-2 text-sm">
           <span className="text-muted-foreground">&gt;</span>

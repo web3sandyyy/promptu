@@ -90,19 +90,19 @@
 .dark {
   /* Terminal Dark Theme - Clean & Minimal */
   --background: #0a0a0a;
-  --foreground: #737373;
+  --foreground: #ffffff;
   --card: #0f0f0f;
-  --card-foreground: #737373;
+  --card-foreground: #ffffff;
   --popover: #0f0f0f;
-  --popover-foreground: #737373;
+  --popover-foreground: #ffffff;
 
   /* Grey Primary */
   --primary: #a3a3a3;
   --primary-foreground: #0a0a0a;
 
-  /* Accent - Green (use sparingly) */
+  /* Accent - White */
   --accent: #1a1a1a;
-  --accent-foreground: #4ade80;
+  --accent-foreground: #ffffff;
 
   /* Muted Secondary */
   --secondary: #171717;
@@ -136,7 +136,7 @@
   --sidebar-primary: #a3a3a3;
   --sidebar-primary-foreground: #0a0a0a;
   --sidebar-accent: #171717;
-  --sidebar-accent-foreground: #a3a3a3;
+  --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #262626;
   --sidebar-ring: #525252;
 
@@ -198,4 +198,13 @@
   .rounded-full {
     border-radius: 0 !important;
   }
+}
+
+.bg-texture {
+  background:
+    repeating-linear-gradient(0deg, #0a0a0a 0, #0a0a0a 20%, transparent 0, transparent 50%),
+    repeating-linear-gradient(45deg, #0c0c0c 0, #0c0c0c 10%, transparent 0, transparent 50%);
+  background-size: 3em 3em;
+  background-color: #0a0a0a;
+  opacity: 1;
 }

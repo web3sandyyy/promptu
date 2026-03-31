@@ -28,14 +28,14 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" variant="sidebar">
       <SidebarHeader>
         <div className="flex items-center gap-2 ">
-          <Terminal className="size-4 text-white" />
+          <Terminal className="size-4 text-white group-data-[collapsible=icon]:mx-auto" />
           <div className="group-data-[collapsible=icon]:hidden">
             <h1 className="header-font text-2xl text-white tracking-wider">PROMPTU</h1>
           </div>
         </div>
       </SidebarHeader>
 
-      <SidebarContent>
+      <SidebarContent className="divide-y">
         <SidebarGroup className="p-0">
           <SidebarGroupLabel className="text-xs text-muted-foreground uppercase tracking-wider">
             &gt; Navigation
@@ -45,7 +45,10 @@ export function AppSidebar() {
               {NAV_ITEMS.map((item) => (
                 <SidebarMenuItem key={item.path}>
                   <SidebarMenuButton asChild isActive={location.pathname === item.path}>
-                    <Link to={item.path}>
+                    <Link
+                      to={item.path}
+                      className="group-data-[collapsible=icon]:mx-auto data-[active=true]:text-white"
+                    >
                       {NAV_ICONS[item.icon]}
                       <span>{item.label}</span>
                     </Link>
@@ -64,7 +67,10 @@ export function AppSidebar() {
             <SidebarMenu className="gap-0">
               <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={isAllPromptsActive}>
-                  <Link to="/library">
+                  <Link
+                    to="/library"
+                    className="group-data-[collapsible=icon]:mx-auto data-[active=true]:text-white"
+                  >
                     {NAV_ICONS.terminal}
                     <span>ALL_PROMPTS</span>
                   </Link>
@@ -73,7 +79,10 @@ export function AppSidebar() {
               {CATEGORIES.map((category) => (
                 <SidebarMenuItem key={category.id}>
                   <SidebarMenuButton asChild isActive={isCategoryActive(category.name)}>
-                    <Link to={`/library/${category.name}`}>
+                    <Link
+                      to={`/library/${category.name}`}
+                      className="group-data-[collapsible=icon]:mx-auto data-[active=true]:text-white"
+                    >
                       {CATEGORY_ICONS[category.title]}
                       <span className="truncate">
                         {category.title.replace(/ & /g, "_").replace(/ /g, "_").toUpperCase()}

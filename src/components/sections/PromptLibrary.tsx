@@ -40,7 +40,7 @@ export function PromptLibrary({ onSelectPrompt, onEditPrompt }: PromptLibraryPro
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 bg-texture">
       {/* Header */}
       <div>
         <h1 className="header-font text-4xl text-foreground tracking-wider mb-2">

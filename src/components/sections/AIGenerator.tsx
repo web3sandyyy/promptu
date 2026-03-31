@@ -75,10 +75,10 @@ STATUS: READY`;
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 p-4 bg-texture">
       {/* Header */}
       <div>
-        <h1 className="header-font text-4xl text-primary tracking-wider mb-2">&gt; AI_GENERATOR</h1>
+        <h1 className="header-font text-4xl text-white tracking-wider mb-2">&gt; AI_GENERATOR</h1>
         <p className="text-muted-foreground text-sm">
           // Generate optimized prompts from scratch using AI
         </p>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import { Home } from "./pages/Home";
 import { PromptLibrary } from "./components/sections/PromptLibrary";
 import { PromptEditor } from "./components/sections/PromptEditor";
 import { AIGenerator } from "./components/sections/AIGenerator";
@@ -30,30 +29,28 @@ function AppContent({
       <Header />
 
       {/* Content Area */}
-      <div className="flex flex-1 flex-col gap-4 p-4">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/library"
-            element={
-              <PromptLibrary onSelectPrompt={handleSelectPrompt} onEditPrompt={handleEditPrompt} />
-            }
-          />
-          <Route
-            path="/library/:category"
-            element={
-              <PromptLibrary onSelectPrompt={handleSelectPrompt} onEditPrompt={handleEditPrompt} />
-            }
-          />
-          <Route
-            path="/editor"
-            element={
-              <PromptEditor key={selectedPrompt?.id || "new"} initialPrompt={selectedPrompt} />
-            }
-          />
-          <Route path="/generate" element={<AIGenerator />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<AIGenerator />} />
+        <Route
+          path="/library"
+          element={
+            <PromptLibrary onSelectPrompt={handleSelectPrompt} onEditPrompt={handleEditPrompt} />
+          }
+        />
+        <Route
+          path="/library/:category"
+          element={
+            <PromptLibrary onSelectPrompt={handleSelectPrompt} onEditPrompt={handleEditPrompt} />
+          }
+        />
+        <Route
+          path="/editor"
+          element={
+            <PromptEditor key={selectedPrompt?.id || "new"} initialPrompt={selectedPrompt} />
+          }
+        />
+        {/* <Route path="/generate" element={<AIGenerator />} /> */}
+      </Routes>
     </SidebarInset>
   );
 }
